@@ -1,27 +1,98 @@
-# NgxWheelSelector
+# ngx-wheel-selector
+🏄🏾  A Wheel Selector (or Data Picker) for Angular 7+
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+This repo uses (hiyali's)[https://github.com/hiyali] (data-picker)[https://github.com/hiyali/ng-data-picker] and is adapted to work with angular 7+
 
-## Development server
+## Examples
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Examples and demos can be consulted in it's (original repo)[https://github.com/hiyali/ng-data-picker]
 
-## Code scaffolding
+> Note that instalation and implementation may change
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Install
 
-## Build
+```shell
+yarn add ng-data-picker
+```
+or
+```shell
+npm i -S ng-data-picker
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Usage
 
-## Running unit tests
+### Quick look
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### app.module.ts
+```typescript
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core'
+import { DataPickerComponent } from 'ng-data-picker'
 
-## Running end-to-end tests
+@NgModule({
+  ...
+  imports: [
+    WheelSelectorModule
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA // for third party component
+  ],
+  ...
+})
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+#### app.component.ts
+```typescript
+export class AppComponent {
+  data = [
+    {
+      list: ['sun', 'earth', 'moon']
+    }
+  ]
 
-## Further help
+  change ({ gIndex, iIndex }) {
+    console.log(gIndex, iIndex)
+  }
+}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+#### app.component.html
+```html
+<ng-data-picker [data]="data" (change)="change($event)"></ng-data-picker>
+```
+
+## ⚙️ Props
+
+| name                       | type       | default       | explain                          |
+| :------------------------- | :--------- | :------------ | :------------------------------- |
+| `change`                   | `Function` | ({gIndex,iIndex})=>{} | Callback after which group's current index changed, pass two arguments, group index `gIndex` and item index `iIndex` |
+| `data`                     | `Array`    | []            | Picker initial data              |
+| `data[i].currentIndex`     | `Number`   | 0             | Current index of this group's list |
+| `data[i].weight`           | `Number`   | 1             | Group weights in parent width `1..12` |
+| `data[i].list`             | `Array`    | -             | List of the group                |
+| `data[i].list[j]`          | `String` or `Object` | -   | Item in the list of group, use `value` key when it is a object item |
+| `data[i].onClick`          | `Function` | -             | Click event on the middle layer of this group, pass two arguments that group index `gIndex` and selected index `iIndex` of this group |
+| `data[i].textAlign`        | `String`   | -             | `start` `center` `end` `justify` `left` `right` `nowrap` `wrap` |
+| `data[i].className`        | `String`   | -             | Your custom class name for this group |
+| `data[i].divider`          | `Boolean`  | false         | If it is true, then `onClick` `list` `currentIndex` will not be used |
+| `data[i].text`             | `String`   | -             | Just use this text when `divider` is true |
+
+## 🔨 Instance methods
+
+| name                       | type       | explain                          |
+| :------------------------- | :--------- | :------------------------------- |
+| `setGroupData`             | `Function` (gIndex,gData)=>void | Dynamically set a group data with two arguments `(gIndex, gData)`, group index and group data (see props `data[i]`) |
+| `getCurrentIndexList`      | `Function` ()=>[] | Return a `Array` of the groups current index list (has divider current index, and it is default to `0`) |
+| `getGroupsRectList`        | `Function` ()=>void | Get some info for gesture, you can call this function when the component displayed if the component is hidden when it's initialization |
+
+## Development
+
+```shell
+npm start # development
+npm run build:prod # build for production
+npm run prepare # build for third party
+```
+
+## License
+
+MIT
+
