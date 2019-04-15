@@ -3,158 +3,19 @@ import {
   Input, Output, EventEmitter, ElementRef, ViewChild, ViewChildren
 } from '@angular/core'
 
-import { PickerDataModel } from './data-picker.models'
-export { PickerDataModel }
+import { SelectorModel } from './wheel-selector.models'
+export { SelectorModel as PickerDataModel }
 
 @Component({
-  selector: 'ng-data-picker',
-  // templateUrl: './data-picker.component.html',
-  template: `
-    <div class="ng-data-picker flex-box">
-
-      <!-- picker-group-layer -->
-      <div #pickerGroupLayer *ngFor="let group of data; let gIndex = index"
-        class="picker-group" [ngClass]="getGroupClass(gIndex)">
-
-        <div class="picker-list">
-          <div *ngIf="group.divider else ngIfElse"
-            class="picker-item divider" [ngClass]="getItemClass(gIndex, iIndex, true)">
-            {{ group.text }}
-          </div>
-
-          <div #ngIfElse *ngFor="let item of group.list; let iIndex = index"
-            class="picker-item" [ngClass]="getItemClass(gIndex, iIndex)" [ngStyle]="getItemStyle(gIndex, iIndex)">
-            {{ item.value || item }}
-          </div>
-        </div>
-
-      </div>
-
-      <div #pickerHandleLayer class="picker-handle-layer flex-box dir-column">
-        <div data-type="top" class="picker-top weight-1"></div>
-        <div data-type="middle" class="picker-middle"></div>
-        <div data-type="bottom" class="picker-bottom weight-1"></div>
-      </div>
-
-    </div>
-  `,
-  // styleUrls: ['./data-picker.component.scss']
-  styles: [`
-    .ng-data-picker {
-      font-size: 1rem;
-      height: 10em;
-      position: relative;
-      background-color: white;
-      overflow: hidden;
-    }
-    .ng-data-picker.black {
-      color: white;
-    }
-    .ng-data-picker .picker-group {
-    }
-    .ng-data-picker .picker-list {
-      height: 6.25em;
-      position: relative;
-      top: 4em; // half of picker height - half of item height
-    }
-    .ng-data-picker .picker-item {
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-      width: 100%;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      display: block;
-      text-align: center;
-      will-change: transform;
-      contain: strict;
-      height: 2em;
-      line-height: 2;
-      font-size: 1em;
-    }
-    .ng-data-picker .selected-item {
-    }
-
-    /* picker handle layer */
-    .ng-data-picker .picker-handle-layer {
-      position: absolute;
-      width: 100%;
-      height: calc(100% + 2px);
-      left: 0;
-      right: 0;
-      top: -1px;
-      bottom: -1px;
-    }
-    .ng-data-picker .picker-handle-layer .picker-top {
-      border-bottom: 0.55px solid rgba(74, 73, 89, 0.5);
-      background: linear-gradient(to bottom, white 2%, rgba(255, 255, 255, 0.1) 100%);
-      transform: translate3d(0, 0, 5.625em);
-    }
-    .ng-data-picker .picker-handle-layer .picker-middle {
-      height: 2em;
-    }
-    .ng-data-picker .picker-handle-layer .picker-bottom {
-      border-top: 0.55px solid rgba(74, 73, 89, 0.5);
-      background: linear-gradient(to top, white 2%, rgba(255, 255, 255, 0.1) 100%);
-      transform: translate3d(0, 0, 5.625em);
-    }
-
-    /* flex system */
-    .flex-box {
-        display: flex;
-    }
-    .flex-box.dir-column {
-      flex-direction: column;
-    }
-    .flex-box.dir-row {
-      flex-direction: row;
-    }
-
-    /* flex system - for items */
-    .flex-box .weight-1 {
-      flex: 1;
-    }
-    .flex-box .weight-2 {
-      flex: 2;
-    }
-    .flex-box .weight-3 {
-      flex: 3;
-    }
-    .flex-box .weight-4 {
-      flex: 4;
-    }
-    .flex-box .weight-5 {
-      flex: 5;
-    }
-    .flex-box .weight-6 {
-      flex: 6;
-    }
-    .flex-box .weight-7 {
-      flex: 7;
-    }
-    .flex-box .weight-8 {
-      flex: 8;
-    }
-    .flex-box .weight-9 {
-      flex: 9;
-    }
-    .flex-box .weight-10 {
-      flex: 10;
-    }
-    .flex-box .weight-11 {
-      flex: 11;
-    }
-    .flex-box .weight-12 {
-      flex: 12;
-    }
-  `]
+  selector: 'ngx-wheel-selector',
+  templateUrl: './wheel-selector.component.html',
+  styleUrls: ['./wheel-selector.component.scss']
 })
-export class DataPickerComponent implements OnInit, AfterViewInit, OnDestroy {
+export class WheelSelectorComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren('pickerGroupLayer') pickerGroupLayer
   @ViewChild('pickerHandleLayer') pickerHandleLayer
 
-  @Input() data: PickerDataModel[] = []
+  @Input() data: SelectorModel[] = []
   @Output() change: EventEmitter<any> = new EventEmitter<any>()
 
   currentIndexList: number[]

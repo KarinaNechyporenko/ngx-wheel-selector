@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DataPickerComponent } from './data-picker.component';
+import { WheelSelectorComponent } from './wheel-selector.component';
 
-describe('DataPickerComponent', () => {
-  let component: DataPickerComponent;
-  let fixture: ComponentFixture<DataPickerComponent>;
+describe('WheelSelectorComponent', () => {
+  let component: WheelSelectorComponent;
+  let fixture: ComponentFixture<WheelSelectorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DataPickerComponent ]
+      declarations: [ WheelSelectorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DataPickerComponent);
+    fixture = TestBed.createComponent(WheelSelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
