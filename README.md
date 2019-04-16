@@ -1,7 +1,9 @@
-# ngx-wheel-selector
-🏄🏾  A Wheel Selector (or Data Picker) for Angular 7+
+[![NPM](https://nodei.co/npm/ngx-wheel-selector.png)](https://nodei.co/npm/ngx-wheel-selector/)
 
-This repo uses [hiyali's](https://github.com/hiyali) [data-picker](https://github.com/hiyali/ng-data-picker) and is adapted to work with angular 7+
+# ngx-wheel-selector
+A Wheel Selector (or Data Picker) for Angular 7+
+
+This repo uses [hiyali's](https://github.com/hiyali) [data-picker](https://github.com/hiyali/ng-data-picker) and has been adapted to work with angular 7+
 
 ## Examples
 
@@ -11,12 +13,9 @@ Examples and demos can be consulted in it's [original repo](https://github.com/h
 
 ## Install
 
+
 ```shell
-yarn add ng-data-picker
-```
-or
-```shell
-npm i -S ng-data-picker
+npm i  @hyperblob/ngx-wheel-selector
 ```
 
 ## Usage
