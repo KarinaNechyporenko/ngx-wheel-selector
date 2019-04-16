@@ -56,7 +56,7 @@ export class AppComponent {
 
 #### app.component.html
 ```html
-<ng-data-picker [data]="data" (change)="change($event)"></ng-data-picker>
+<ngx-wheel-selector [data]="data" (change)="change($event)"></ngx-wheel-selector>
 ```
 
 ## ⚙️ Props
