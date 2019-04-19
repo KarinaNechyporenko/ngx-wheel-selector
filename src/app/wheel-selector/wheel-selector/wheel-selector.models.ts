@@ -5,7 +5,7 @@ export interface SelectorModel {
 
   onClick?: Function
   currentIndex?: number
-  list?:	Array<string>
+  list?:	Array<string> | Array<number>
 
   divider?: boolean
   text?: string
