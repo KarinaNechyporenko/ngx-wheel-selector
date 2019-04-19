@@ -1,6 +1,6 @@
 {
   "name": "@hyperblob/ngx-wheel-selector",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,8 +11,7 @@
     "package": "ng-packagr -p package.json"
   },
   "private": false,
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@angular/animations": "~7.2.0",
     "@angular/common": "~7.2.0",

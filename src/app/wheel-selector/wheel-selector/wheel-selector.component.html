@@ -11,10 +11,12 @@
           {{ group.text }}
         </div>
   
-        <div #ngIfElse
-          class="picker-item" [ngClass]="getItemClass(gIndex, iIndex)" [ngStyle]="getItemStyle(gIndex, iIndex)">
-          {{ item.value || item }}
-        </div>
+        <ng-template #ngIfElse>
+          <div 
+            class="picker-item" [ngClass]="getItemClass(gIndex, iIndex)" [ngStyle]="getItemStyle(gIndex, iIndex)">
+            {{ item.value || item }}
+          </div>
+        </ng-template>
       </ng-container>
     </div>
 
