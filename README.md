@@ -3,13 +3,13 @@
 # ngx-wheel-selector
 A Wheel Selector (or Data Picker) for Angular 7+
 
-This repo uses [hiyali's](https://github.com/hiyali) [data-picker](https://github.com/hiyali/ng-data-picker) and has been adapted to work with angular 7+
+This project is based on [hiyali's](https://github.com/hiyali) [data-picker](https://github.com/hiyali/ng-data-picker)
 
 ## Examples
 
 Examples and demos can be consulted in it's [original repo](https://github.com/hiyali/ng-data-picker)
 
-> Note that instalation and implementation may change
+> We are working on our own examples and a documentation page
 
 ## Install
 
@@ -17,6 +17,7 @@ Examples and demos can be consulted in it's [original repo](https://github.com/h
 ```shell
 npm i  @hyperblob/ngx-wheel-selector
 ```
+> Note that instalation and implementation may change
 
 ## Usage
 
@@ -60,6 +61,8 @@ export class AppComponent {
 ```
 
 ## ⚙️ Props
+
+Data input must be an array of configurations called "Groups", see below:
 
 | name                       | type       | default       | explain                          |
 | :------------------------- | :--------- | :------------ | :------------------------------- |
