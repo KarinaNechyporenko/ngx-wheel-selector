@@ -26,7 +26,7 @@ npm i  @hyperblob/ngx-wheel-selector
 #### app.module.ts
 ```typescript
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core'
-import { DataPickerComponent } from 'ng-data-picker'
+import { WheelSelectorModule } from '@hyperblob/ngx-wheel-selector';
 
 @NgModule({
   ...
